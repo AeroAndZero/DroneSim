@@ -1,0 +1,13 @@
+canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 0;
+}
+
+.UI{
+    color: white;
+    z-index: 1;
+    position: fixed;
+}

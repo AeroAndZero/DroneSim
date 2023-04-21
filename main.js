@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import Drone from './drone.js';
 
 // setting up scene
 const scene = new THREE.Scene();
@@ -9,16 +10,6 @@ const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("main")});
 renderer.setSize(window.innerWidth, window.innerHeight);
 let renderList = [];
-
-// importing models
-const drone = new GLTFLoader();
-drone.load('res/DJI Mini 3.glb', function(gltf){
-    console.log(gltf);
-    scene.add(gltf.scene);
-}, undefined, function(error){
-    console.error(error);
-});
-
 
 /*
 *       MAIN CODE
@@ -48,7 +39,8 @@ renderList.push(gridHelper);
 
 // ...action!
 const controls = new OrbitControls( camera, renderer.domElement );
-console.log(drone)
+
+const drone = new Drone(scene);
 
 // Adding elements to the scene
 renderList.forEach((obj) => {
